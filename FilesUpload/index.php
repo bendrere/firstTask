@@ -1,7 +1,7 @@
 <?php
 
 
-$uploaddir = './downloads/';
+$uploadDir = './downloads/';
 
 $allowedTypes = ["image/png", "image/jpeg", "image/jpg", "image/gif"];
 
@@ -12,7 +12,7 @@ if (isset($_FILES) && isset($_FILES['fileToUpload'])) {
         if ($fileData['error'] === UPLOAD_ERR_OK) {
             $fileName = $fileData['name'];
             $tmpName = $fileData['tmp_name'];
-            $destinationPath = $uploaddir . $fileName;
+            $destinationPath = $uploadDir . $fileName;
             if (move_uploaded_file($tmpName, $destinationPath)) {
                 header("Location: http://php-magento-lab.loc/FilesUpload/ShowDirectory.php");
             } else {
@@ -21,9 +21,7 @@ if (isset($_FILES) && isset($_FILES['fileToUpload'])) {
             }
         }
     } else {
-        echo 'Файл слишком большой или недопустимое расширение';
         header("Location: http://php-magento-lab.loc/FilesUpload/showimages.html");
-
     }
 }
 

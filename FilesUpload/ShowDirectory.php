@@ -14,7 +14,9 @@ while ($file = readdir($dirHandle)) {
     if ($file == "." || $file == "..") {
         continue;  //пропустить ссылки на другие папки
     }
-    if ($k % $cols == 0) echo "<tr>";
+    if ($k % $cols == 0) {
+        echo "<tr>";
+    }
 
     echo "<td>";
 
@@ -22,8 +24,9 @@ while ($file = readdir($dirHandle)) {
                 <img src="' . $uploaddir . '/' . $file . '" class="pimg" width = "400" title="' . $file . '" />
                 </div>';
     echo "</td>";
-    if ((($k + 1) % $cols == 0) || (($i + 1) == count($files))) echo "</tr>";
-
+    if ((($k + 1) % $cols == 0) || (($i + 1) == count($files))) {
+        echo "</tr>";
+    }
 
     $i++;
     $k++;
