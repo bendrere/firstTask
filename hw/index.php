@@ -11,13 +11,13 @@ ini_set('session.gc_maxlifetime', 86400);
 
 
 
-if (isset($_COOKIE["visit_count"])) {
-    $visit_count = $_COOKIE["visit_count"] + 1;
+if (isset($_COOKIE["updateCount"])) {
+    $count = $_COOKIE["updateCount"] + 1;
 }
 
-setcookie("visit_count", $visit_count, strtotime("+30 days"));
+setcookie("updateCount", $count, strtotime("+1 hour"));
 
-echo($visit_count);
+echo($count);
 
 
 $firstSession = new SessionSaveHandler($pathToFile);
