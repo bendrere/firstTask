@@ -7,6 +7,12 @@ interface Laptop
      * @return string
      */
     public function info(): string;
+
+    /**
+     * @param $type
+     * @return string
+     */
+    public function __getSerialNumber($type): string;
 }
 
 
@@ -45,6 +51,7 @@ class LaptopCreating implements Laptop
 }
 
 
+
 class CarFactory
 {
     /**
@@ -53,9 +60,13 @@ class CarFactory
      */
     public static function makeCar($type): Laptop
     {
-        return new LaptopCreating($type);
-    }
+        if ($type == "") {
+            throw new Exception('Laptop not found.');
 
+        } else {
+            return new LaptopCreating($type);
+        }
+    }
 }
 
 $laptop1 = CarFactory::makeCar('23059eedwf9f0e');
