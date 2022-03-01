@@ -37,7 +37,6 @@ class SessionSaveHandler implements SessionHandlerInterface
             unlink($file);
         }
         return true;
-
     }
 
     /**
@@ -75,7 +74,6 @@ class SessionSaveHandler implements SessionHandlerInterface
     public function read($id): string
     {
         return (string)@file_get_contents("$this->dir/sesid_$id.json");
-
     }
 
     /**
@@ -86,10 +84,6 @@ class SessionSaveHandler implements SessionHandlerInterface
     public function write($id, $data): bool
     {
         $data = unserialize($data);
-        if (file_put_contents("$this->dir/sesid_$id.json", json_encode($data, JSON_FORCE_OBJECT)) === false) {
-            return false;
-        } else {
-            return true;
-        }
+        return file_put_contents("$this->dir/sesid_$id.json", json_encode($data, JSON_FORCE_OBJECT));
     }
 }
